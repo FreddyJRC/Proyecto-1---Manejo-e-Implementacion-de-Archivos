@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/comandos.h
+
+/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/main.c
+stdio.h
+-
+stdbool.h
+-
+string.h
+-
+stdlib.h
+-
+ctype.h
+-
+comandos.h
+/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/comandos.h
+models/list.h
+/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/models/list.h
+
+/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/models/list.h
+
