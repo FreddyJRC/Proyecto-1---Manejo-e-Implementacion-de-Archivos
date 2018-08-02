@@ -45,40 +45,36 @@ bool menu(char *command) {
     bool res = true;
 
     list *flags = parse(command);
-//    flag = strtok(command, " ");
-//    while(flag != NULL) {
-//        addNode(flags, flag);
-//        flag = strtok(NULL, " ");
+
+    if(strcmp(flags->command, "exec") == 0){
+        res = abrir(flags);
+    }else if(strcmp(flags->command, "mkdisk") == 0){
+        res = mkdisk(flags);
+    }
+
+//    printf("Comando: %s\n", flags->command);
+//    node *actual = flags->first;
+//    while (actual != NULL){
+//        printf("%s: %s\n", actual->flag, actual->val);
+//        actual = actual->next;
 //    }
-//    free(flag);
-
-    if(strcmp(flags->command, "abrir") == 0){
-        //res = abrir(flags);
-    }
-
-    printf("Comando: %s\n", flags->command);
-    node *actual = flags->first;
-    while (actual != NULL){
-        printf("%s: %s\n", actual->flag, actual->val);
-        actual = actual->next;
-    }
 
     free(flags);
     return res;
 }
 
 bool abrir(list *flags) {
-    char *path = flags->first->next->val;
+    node *path = find(flags, "path");
     if(path == NULL) {
-        printf("ERROR: La direccion del archivo no ha sido especificada.");
+        printf("ERROR: La direccion del archivo no ha sido especificada.\n");
         return 1;
     }
 
     char * line = NULL;
     size_t len = 0;
-    FILE *fp = fopen(path, "r");
+    FILE *fp = fopen(path->val, "r");
     if(fp == NULL) {
-        printf("ERROR: El archivo especificado no ha podido ser abierto.");
+        printf("ERROR: El archivo especificado no ha podido ser abierto.\n");
         return 1;
     }
 
@@ -134,7 +130,7 @@ list *parse(char *input) {
         }else if(status == 1){
             if(*c == '-'){ }
             else if(*c == '>'){
-                addNode(res, cat);
+                newNode = addNode(res, cat);
 
                 cat = "";
                 status = 2;
@@ -148,7 +144,7 @@ list *parse(char *input) {
                 if (string){
                     cat = concat(cat, *c);
                 }else{
-                    res->last->val = cat;
+                    newNode->val = cat;
 
                     cat = "";
                     status = 1;
@@ -158,6 +154,8 @@ list *parse(char *input) {
                 cat = concat(cat, *c);
             }
         }
+
+        if(*c == '\0') { break; }
 
     }while(++c);
 

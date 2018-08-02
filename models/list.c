@@ -13,7 +13,7 @@ list * newList(){
     return new;
 }
 
-void addNode(list *list, char *flag) {
+node * addNode(list *list, char *flag) {
     node *tmp = malloc(sizeof(node));
     tmp->next = NULL;
     tmp->flag = flag;
@@ -25,4 +25,17 @@ void addNode(list *list, char *flag) {
         list->last->next = tmp;
         list->last = tmp;
     }
+
+    return tmp;
+}
+
+node * find(list *list, char *toFind){
+    node *actual = list->first;
+
+    while (actual != NULL){
+        if(strcmp(actual->flag, toFind) == 0) { return actual; }
+        actual = actual->next;
+    }
+
+    return NULL;
 }

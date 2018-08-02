@@ -6,9 +6,15 @@
 
 #IncludeRegexTransform: 
 
+/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/comandos.c
+libgen.h
+-
+sys/stat.h
+-
+comandos.h
 /home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/comandos.h
 
-/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/main.c
+/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/comandos.h
 stdio.h
 -
 stdbool.h
@@ -19,8 +25,6 @@ stdlib.h
 -
 ctype.h
 -
-comandos.h
-/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/comandos.h
 models/list.h
 /home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/models/list.h
 

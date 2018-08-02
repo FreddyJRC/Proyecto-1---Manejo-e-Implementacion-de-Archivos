@@ -18,6 +18,7 @@ typedef struct list {
 } list;
 
 list * newList();
-void addNode(list *list, char *flag);
+node * addNode(list *list, char *flag);
+node * find(list *list, char *toFind);
 
 #endif //PROYECTO1_LIST_H
