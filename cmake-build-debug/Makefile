@@ -177,6 +177,33 @@ main.c.s:
 	$(MAKE) -f CMakeFiles/Proyecto1.dir/build.make CMakeFiles/Proyecto1.dir/main.c.s
 .PHONY : main.c.s
 
+models/MBR.o: models/MBR.c.o
+
+.PHONY : models/MBR.o
+
+# target to build an object file
+models/MBR.c.o:
+	$(MAKE) -f CMakeFiles/Proyecto1.dir/build.make CMakeFiles/Proyecto1.dir/models/MBR.c.o
+.PHONY : models/MBR.c.o
+
+models/MBR.i: models/MBR.c.i
+
+.PHONY : models/MBR.i
+
+# target to preprocess a source file
+models/MBR.c.i:
+	$(MAKE) -f CMakeFiles/Proyecto1.dir/build.make CMakeFiles/Proyecto1.dir/models/MBR.c.i
+.PHONY : models/MBR.c.i
+
+models/MBR.s: models/MBR.c.s
+
+.PHONY : models/MBR.s
+
+# target to generate assembly for a file
+models/MBR.c.s:
+	$(MAKE) -f CMakeFiles/Proyecto1.dir/build.make CMakeFiles/Proyecto1.dir/models/MBR.c.s
+.PHONY : models/MBR.c.s
+
 models/list.o: models/list.c.o
 
 .PHONY : models/list.o
@@ -219,6 +246,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... models/MBR.o"
+	@echo "... models/MBR.i"
+	@echo "... models/MBR.s"
 	@echo "... models/list.o"
 	@echo "... models/list.i"
 	@echo "... models/list.s"

@@ -4,7 +4,10 @@
 
 #include <libgen.h>
 #include <sys/stat.h>
+#include <time.h>
 #include "comandos.h"
+#include "models/MBR.h"
+
 bool mkdisk(list* list){
     node *size = NULL;
     node *path = NULL;
@@ -44,11 +47,13 @@ bool mkdisk(list* list){
     if(fp != NULL){
         int z = 0;
         if(unit == NULL || strcmp(unit->val, "m") == 0 || strcmp(unit->val, "M") == 0){
-            for (int i = 0; i <= s*1024*1024; ++i) {
+            s = s * 1024 * 1024;
+            for (int i = 0; i <= s; ++i) {
                 putc(0, fp);
             }
         }else if(strcmp(unit->val, "k") == 0 || strcmp(unit->val, "K") == 0){
-            for (int i = 0; i <= s * 1024; ++i) {
+            s = s * 1024;
+            for (int i = 0; i <= s; ++i) {
                 putc(0, fp);
             }
         }else{
@@ -58,10 +63,28 @@ bool mkdisk(list* list){
         }
     } else {
         printf("ERROR: Archivo no pudo ser creado.\n");
+        return true;
     }
 
-    fclose(fp);
+    time_t timer;
+    time(&timer);
+    struct tm* tm_info;
+    tm_info = localtime(&timer);
+
     printf("Disco creado exitosamente.\n");
+
+    MBR *tabla = malloc(sizeof(MBR));
+    tabla->mbr_size = s;
+    tabla->mbr_disk_signature = (int) timer;
+    strftime(tabla->mbr_creation_date, 16, "%d/%m/%Y %H:%M", tm_info);
+
+    fseek(fp, 0, SEEK_SET);
+    fwrite(tabla, sizeof(MBR), 1, fp);
+
+    printf("MBR creado.\n");
+    free(tabla);
+    fclose(fp);
+
 
     return true;
 }

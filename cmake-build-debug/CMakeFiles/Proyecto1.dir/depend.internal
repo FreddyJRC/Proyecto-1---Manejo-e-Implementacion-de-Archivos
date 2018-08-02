@@ -4,11 +4,15 @@
 CMakeFiles/Proyecto1.dir/comandos.c.o
  /home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/comandos.c
  /home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/comandos.h
+ /home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/models/MBR.h
  /home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/models/list.h
 CMakeFiles/Proyecto1.dir/main.c.o
  /home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/comandos.h
  /home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/main.c
  /home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/models/list.h
+CMakeFiles/Proyecto1.dir/models/MBR.c.o
+ /home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/models/MBR.c
+ /home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/models/MBR.h
 CMakeFiles/Proyecto1.dir/models/list.c.o
  /home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/models/list.c
  /home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/models/list.h

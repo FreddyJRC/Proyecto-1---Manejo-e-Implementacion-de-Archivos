@@ -85,6 +85,12 @@
 		<Unit filename="/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/main.c">
 			<Option target="Proyecto1"/>
 		</Unit>
+		<Unit filename="/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/models/MBR.c">
+			<Option target="Proyecto1"/>
+		</Unit>
+		<Unit filename="/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/models/MBR.h">
+			<Option target="Proyecto1"/>
+		</Unit>
 		<Unit filename="/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/models/list.c">
 			<Option target="Proyecto1"/>
 		</Unit>

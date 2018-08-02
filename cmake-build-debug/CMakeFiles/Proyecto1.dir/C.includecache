@@ -11,8 +11,12 @@ libgen.h
 -
 sys/stat.h
 -
+time.h
+-
 comandos.h
 /home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/comandos.h
+models/MBR.h
+/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/models/MBR.h
 
 /home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/comandos.h
 stdio.h
@@ -27,6 +31,8 @@ ctype.h
 -
 models/list.h
 /home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/models/list.h
+
+/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/models/MBR.h
 
 /home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/models/list.h
 
