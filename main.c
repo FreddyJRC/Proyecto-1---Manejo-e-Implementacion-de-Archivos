@@ -46,10 +46,14 @@ bool menu(char *command) {
 
     list *flags = parse(command);
 
+    if(flags->command == NULL) return true;
+
     if(strcmp(flags->command, "exec") == 0){
         res = abrir(flags);
     }else if(strcmp(flags->command, "mkdisk") == 0){
         res = mkdisk(flags);
+    }else if(strcmp(flags->command, "rmdisk") == 0){
+        res = rmdisk(flags);
     }
 
 //    printf("Comando: %s\n", flags->command);

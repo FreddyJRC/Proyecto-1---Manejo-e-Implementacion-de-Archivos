@@ -88,3 +88,26 @@ bool mkdisk(list* list){
 
     return true;
 }
+
+bool rmdisk(list* list){
+    node *path = NULL;
+    node *actual = list->first;
+
+    while (actual != NULL){
+        if(strcmp(actual->flag, "path") == 0) { path = actual; }
+        actual = actual->next;
+    }
+    free(actual);
+
+    if(path == NULL){
+        printf("ERROR: Parametros obligatorios no especificados.\n");
+        return true;
+    }
+
+    if(remove(path->val) == 0)
+        printf("Disco eliminado exitosamente.\n");
+    else
+        printf("ERROR: No se ha podido eliminar el disco especificado.\n");
+
+    return true;
+}

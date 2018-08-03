@@ -13,5 +13,6 @@
 #include "models/list.h"
 
 bool mkdisk(list* list);
+bool rmdisk(list* list);
 
 #endif //PROYECTO1_COMANDOS_H
