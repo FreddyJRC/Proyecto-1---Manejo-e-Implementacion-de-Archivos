@@ -38,9 +38,7 @@ int main() {
 
 bool menu(char *command) {
     if(strlen(command) <= 0) return true;
-    if(strcmp(command, "salir") == 0) {
-        return false;
-    }
+    if(strcmp(command, "salir") == 0) return false;
 
     bool res = true;
 
@@ -54,6 +52,8 @@ bool menu(char *command) {
         res = mkdisk(flags);
     }else if(strcmp(flags->command, "rmdisk") == 0){
         res = rmdisk(flags);
+    }else if(strcmp(flags->command, "fdisk") == 0){
+        res = fdisk(flags);
     }
 
 //    printf("Comando: %s\n", flags->command);

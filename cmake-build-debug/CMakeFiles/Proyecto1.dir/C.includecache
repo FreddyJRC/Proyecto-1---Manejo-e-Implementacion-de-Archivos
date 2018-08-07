@@ -6,6 +6,20 @@
 
 #IncludeRegexTransform: 
 
+/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/comandos.c
+libgen.h
+-
+sys/stat.h
+-
+time.h
+-
+comandos.h
+/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/comandos.h
+models/MBR.h
+/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/models/MBR.h
+models/EBR.h
+/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/models/EBR.h
+
 /home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/comandos.h
 stdio.h
 -
@@ -20,21 +34,9 @@ ctype.h
 models/list.h
 /home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/models/list.h
 
-/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/main.c
-stdio.h
--
-stdbool.h
--
-string.h
--
-stdlib.h
--
-ctype.h
--
-comandos.h
-/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/comandos.h
-models/list.h
-/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/models/list.h
+/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/models/EBR.h
+
+/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/models/MBR.h
 
 /home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/models/list.h
 

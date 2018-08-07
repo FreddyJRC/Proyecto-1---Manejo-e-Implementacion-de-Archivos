@@ -3,6 +3,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Proyecto1.dir/models/list.c.o"
   "CMakeFiles/Proyecto1.dir/comandos.c.o"
   "CMakeFiles/Proyecto1.dir/models/MBR.c.o"
+  "CMakeFiles/Proyecto1.dir/models/EBR.c.o"
   "Proyecto1.pdb"
   "Proyecto1"
 )

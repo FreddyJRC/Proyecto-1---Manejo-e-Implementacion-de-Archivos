@@ -14,5 +14,6 @@
 
 bool mkdisk(list* list);
 bool rmdisk(list* list);
+bool fdisk(list* list);
 
 #endif //PROYECTO1_COMANDOS_H

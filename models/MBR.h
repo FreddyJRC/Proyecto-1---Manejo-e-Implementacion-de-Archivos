@@ -6,19 +6,21 @@
 #define PROYECTO1_MBR_H
 
 typedef struct part{
-    int part_status;
+    char part_status;
     char part_type;
     char part_fit;
     int part_start;
     int part_size;
-    char part_name[16];
+    char part_name[17];
 } part;
 
 typedef struct MBR{
     int mbr_size;
-    char mbr_creation_date[16];
+    char mbr_creation_date[17];
     int mbr_disk_signature;
     part parts[4];
 } MBR;
+
+part newPart(char part_status, char part_type, char part_fit, int part_start, int part_size, char part_name[17]);
 
 #endif //PROYECTO1_MBR_H

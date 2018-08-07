@@ -177,6 +177,33 @@ main.c.s:
 	$(MAKE) -f CMakeFiles/Proyecto1.dir/build.make CMakeFiles/Proyecto1.dir/main.c.s
 .PHONY : main.c.s
 
+models/EBR.o: models/EBR.c.o
+
+.PHONY : models/EBR.o
+
+# target to build an object file
+models/EBR.c.o:
+	$(MAKE) -f CMakeFiles/Proyecto1.dir/build.make CMakeFiles/Proyecto1.dir/models/EBR.c.o
+.PHONY : models/EBR.c.o
+
+models/EBR.i: models/EBR.c.i
+
+.PHONY : models/EBR.i
+
+# target to preprocess a source file
+models/EBR.c.i:
+	$(MAKE) -f CMakeFiles/Proyecto1.dir/build.make CMakeFiles/Proyecto1.dir/models/EBR.c.i
+.PHONY : models/EBR.c.i
+
+models/EBR.s: models/EBR.c.s
+
+.PHONY : models/EBR.s
+
+# target to generate assembly for a file
+models/EBR.c.s:
+	$(MAKE) -f CMakeFiles/Proyecto1.dir/build.make CMakeFiles/Proyecto1.dir/models/EBR.c.s
+.PHONY : models/EBR.c.s
+
 models/MBR.o: models/MBR.c.o
 
 .PHONY : models/MBR.o
@@ -246,6 +273,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... models/EBR.o"
+	@echo "... models/EBR.i"
+	@echo "... models/EBR.s"
 	@echo "... models/MBR.o"
 	@echo "... models/MBR.i"
 	@echo "... models/MBR.s"
