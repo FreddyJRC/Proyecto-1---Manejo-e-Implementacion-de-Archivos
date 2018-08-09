@@ -88,6 +88,7 @@ bool abrir(list *flags) {
         if ((pos=strchr(line, '\n')) != NULL)
             *pos = '\0';
 
+        printf("->%s\n", line);
         res = menu(line);
         if (!res) break;
     }
@@ -163,6 +164,7 @@ list *parse(char *input) {
 
     }while(++c);
 
+    //free(newNode);
     return res;
 }
 

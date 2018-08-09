@@ -64,33 +64,32 @@ bool mkdisk(list* list){
                 putc(0, fp);
             }
         }
+
+        time_t timer;
+        time(&timer);
+        struct tm* tm_info;
+        tm_info = localtime(&timer);
+
+        printf("Disco creado exitosamente.\n");
+
+        MBR *tabla = malloc(sizeof(MBR));
+        tabla->mbr_size = s;
+        tabla->mbr_disk_signature = (int) timer;
+        strftime(tabla->mbr_creation_date, 17, "%d/%m/%Y %H:%M", tm_info);
+        for (int j = 0; j < 4; ++j) {
+            tabla->parts[j].part_status = 'f';
+        }
+
+        fseek(fp, 0, SEEK_SET);
+        fwrite(tabla, sizeof(MBR), 1, fp);
+
+        printf("MBR creado.\n");
+        free(tabla);
+        fclose(fp);
     } else {
         printf("ERROR: Archivo no pudo ser creado.\n");
         return true;
     }
-
-    time_t timer;
-    time(&timer);
-    struct tm* tm_info;
-    tm_info = localtime(&timer);
-
-    printf("Disco creado exitosamente.\n");
-
-    MBR *tabla = malloc(sizeof(MBR));
-    tabla->mbr_size = s;
-    tabla->mbr_disk_signature = (int) timer;
-    strftime(tabla->mbr_creation_date, 17, "%d/%m/%Y %H:%M", tm_info);
-    for (int j = 0; j < 4; ++j) {
-        tabla->parts[j].part_status = 'f';
-    }
-
-    fseek(fp, 0, SEEK_SET);
-    fwrite(tabla, sizeof(MBR), 1, fp);
-
-    printf("MBR creado.\n");
-    free(tabla);
-    fclose(fp);
-    free(fp);
 
     return true;
 }
@@ -156,7 +155,6 @@ bool fdisk(list* list){
     MBR *tabla = malloc(sizeof(MBR));
     fread(tabla, sizeof(MBR), 1, fp);
     fclose(fp);
-    free(fp);
 
     if(size != NULL) {
         int part_available = 1;
@@ -291,47 +289,54 @@ bool fdisk(list* list){
                     newExtended->part_start = st+1;
                     newExtended->part_status = 'f';
                     newExtended->part_next = -1;
+                    newExtended->part_size = 0;
                     fseek(fp, st+1, SEEK_SET);
                     fwrite(newExtended, sizeof(EBR), 1, fp);
                     free(newExtended);
                 }
                 fclose(fp);
+                printf("Particion creada exitosamente.\n");
             }
         } else {
             /*CREACION DE PARTICIONES LOGICAS*/
-            part *extended_part = NULL;
+            part extended_part;
+            extended_part.part_status = -1;
+
             for (int i = 0; i < 4; ++i) {
                 if (tabla->parts[i].part_status == 'a' && tabla->parts[i].part_type == 'e') {
-                    extended_part = &tabla->parts[i];
+                    extended_part = tabla->parts[i];
                     break;
                 }
             }
 
-            if (extended_part == NULL) {
+            if (extended_part.part_status == -1) {
                 printf("Particion extendida no encontrada.\n");
                 free(tabla);
                 return true;
             }
 
-            if (s > (extended_part->part_size - sizeof(EBR))) {
+            if (s > (extended_part.part_size - sizeof(EBR))) {
                 printf("Espacio insuficiente.\n");
                 free(tabla);
                 return true;
             }
 
-            if ((fp = fopen(path->val, "rb+")) == NULL) {
+            EBR *ebr_list;
+
+            if ((fp = fopen(path->val, "rb")) == NULL) {
                 printf("ERROR: no fue posible arrir el archivo.\n");
                 return true;
+            } else {
+                ebr_list = malloc(sizeof(EBR));
+
+                fseek(fp, extended_part.part_start, SEEK_SET);
+                fread(ebr_list, sizeof(EBR), 1, fp);
+                fclose(fp);
             }
-
-            EBR *ebr_list = malloc(sizeof(EBR));
-
-            fseek(fp, extended_part->part_start, SEEK_SET);
-            fread(ebr_list, sizeof(EBR), 1, fp);
 
             if (ebr_list->part_status == 'f') {
                 if (ebr_list->part_next == -1){
-                    if ((s) <= (extended_part->part_size - (extended_part->part_start - 1))){
+                    if ((s) <= (extended_part.part_size - (extended_part.part_start - 1))){
                         ebr_list->part_start = ebr_list->part_start;
                         ebr_list->part_size = s;
                         ebr_list->part_next = -1;
@@ -339,12 +344,19 @@ bool fdisk(list* list){
                         strcpy(ebr_list->part_name, name->val);
                         ebr_list->part_fit = f;
 
-                        fseek(fp, ebr_list->part_start, SEEK_SET);
-                        fwrite(ebr_list, sizeof(EBR), 1, fp);
-                        free(ebr_list);
+                        if((fp = fopen(path->val, "rb+")) != NULL) {
+                            fseek(fp, ebr_list->part_start, SEEK_SET);
+                            fwrite(ebr_list, sizeof(EBR), 1, fp);
+
+                            fclose(fp);
+                            free(ebr_list);
+                            free(tabla);
+                            printf("Particion logica creada exitosamente.\n");
+                            return true;
+                        }
+
                     } else {
                         printf("Espacio insuficiente.\n");
-                        fclose(fp);
                         free(ebr_list);
                         free(tabla);
                         return true;
@@ -359,75 +371,89 @@ bool fdisk(list* list){
                         strcpy(ebr_list->part_name, name->val);
                         ebr_list->part_fit = f;
 
-                        fseek(fp, ebr_list->part_start, SEEK_SET);
-                        fwrite(ebr_list, sizeof(EBR), 1, fp);
-                        free(ebr_list);
+                        if((fp = fopen(path->val, "rb+")) != NULL) {
+                            fseek(fp, ebr_list->part_start, SEEK_SET);
+                            fwrite(ebr_list, sizeof(EBR), 1, fp);
+
+                            printf("Particion logica creada exitosamente.\n");
+                            fclose(fp);
+                            free(ebr_list);
+                            free(tabla);
+                            return true;
+                        }
                     }
                 }
             }
 
 
-            int st = extended_part->part_start;
+            int st = extended_part.part_start;
             do {
-                fseek(fp, st, SEEK_SET);
-                fread(ebr_list, sizeof(EBR), 1, fp);
+                if((fp = fopen(path->val, "rb+")) != NULL) {
+                    fseek(fp, st, SEEK_SET);
+                    fread(ebr_list, sizeof(EBR), 1, fp);
 
-                if (ebr_list->part_next == -1){
-                    if ((s) <= (extended_part->part_size - ((ebr_list->part_start - 1) + ebr_list->part_size))){
+                    if (ebr_list->part_next == -1){
+                        if ((s) <= (((extended_part.part_start - 1) + extended_part.part_size)
+                                        - ((ebr_list->part_start - 1) + ebr_list->part_size))){
 
-                        ebr_list->part_next = ebr_list->part_start + ebr_list->part_size;
+                            ebr_list->part_next = ebr_list->part_start + ebr_list->part_size;
 
-                        fseek(fp, ebr_list->part_start, SEEK_SET);
-                        fwrite(ebr_list, sizeof(EBR), 1, fp);
+                            fseek(fp, ebr_list->part_start, SEEK_SET);
+                            fwrite(ebr_list, sizeof(EBR), 1, fp);
 
-                        EBR *newEBR = malloc(sizeof(EBR));
-                        newEBR->part_start = ebr_list->part_next;
-                        newEBR->part_next = -1;
-                        newEBR->part_size = s;
-                        newEBR->part_fit = f;
-                        newEBR->part_status = 'a';
-                        strcpy(newEBR->part_name, name->val);
+                            EBR *newEBR = malloc(sizeof(EBR));
+                            newEBR->part_start = ebr_list->part_next;
+                            newEBR->part_next = -1;
+                            newEBR->part_size = s;
+                            newEBR->part_fit = f;
+                            newEBR->part_status = 'a';
+                            strcpy(newEBR->part_name, name->val);
 
-                        fseek(fp, newEBR->part_start, SEEK_SET);
-                        fwrite(newEBR, sizeof(EBR), 1, fp);
-                        free(newEBR);
-                        break;
+                            fseek(fp, newEBR->part_start, SEEK_SET);
+                            fwrite(newEBR, sizeof(EBR), 1, fp);
+                            fclose(fp);
+                            free(newEBR);
 
-                    } else {
-                        printf("Espacio insuficiente.\n");
-                        break;
+                            printf("Particion logica creada exitosamente.\n");
+                            break;
+
+                        } else {
+                            printf("Espacio insuficiente.\n");
+                            break;
+                        }
+                    }else{
+                        if ((s) <= (ebr_list->part_next - ((ebr_list->part_start - 1) + ebr_list->part_size))) {
+
+                            EBR *newEBR = malloc(sizeof(EBR));
+                            newEBR->part_start = (ebr_list->part_start) + ebr_list->part_size;
+                            newEBR->part_next = ebr_list->part_next;
+                            newEBR->part_size = s;
+                            newEBR->part_fit = f;
+                            newEBR->part_status = 'a';
+                            strcpy(newEBR->part_name, name->val);
+
+                            fseek(fp, newEBR->part_start, SEEK_SET);
+                            fwrite(newEBR, sizeof(EBR), 1, fp);
+
+                            ebr_list->part_next = newEBR->part_start;
+
+                            fseek(fp, ebr_list->part_start, SEEK_SET);
+                            fwrite(ebr_list, sizeof(EBR), 1, fp);
+                            fclose(fp);
+                            free(newEBR);
+
+                            printf("Particion logica creada exitosamente.\n");
+                            break;
+
+                        }
                     }
-                }else{
-                    if ((s) <= (ebr_list->part_next - ((ebr_list->part_start - 1) + ebr_list->part_size))) {
-
-                        EBR *newEBR = malloc(sizeof(EBR));
-                        newEBR->part_start = (ebr_list->part_start) + ebr_list->part_size;
-                        newEBR->part_next = ebr_list->part_next;
-                        newEBR->part_size = s;
-                        newEBR->part_fit = f;
-                        newEBR->part_status = 'a';
-                        strcpy(newEBR->part_name, name->val);
-
-                        fseek(fp, newEBR->part_start, SEEK_SET);
-                        fwrite(newEBR, sizeof(EBR), 1, fp);
-
-                        ebr_list->part_next = newEBR->part_start;
-
-                        fseek(fp, ebr_list->part_start, SEEK_SET);
-                        fwrite(ebr_list, sizeof(EBR), 1, fp);
-
-                        free(newEBR);
-                        break;
-
-                    }
+                    fclose(fp);
+                    st = ebr_list->part_next;
                 }
 
-                st = ebr_list->part_next;
             } while (ebr_list->part_next != -1);
 
 
-            fclose(fp);
-            free(fp);
             free(ebr_list);
             free(tabla);
             return true;
