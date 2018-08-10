@@ -562,6 +562,133 @@ bool fdisk(list* list){
             }
         }
 
+    } else if (delete != NULL){
+        printf("Seguro que desea eliminar la particion %s [Y/n]:", name->val);
+        char v = getc(stdin);
+        printf("\n");
+
+        if (tolower(v) == 'y') {
+            for (; *delete->val; ++delete->val) *delete->val = tolower(*delete->val);
+
+            for (int i = 0; i < 4; ++i) {
+                if (tabla->parts[i].part_status == 'a' && strcmp(tabla->parts[i].part_name, name->val) == 0) {
+
+                    if (strcmp(delete->val, "fast") == 0){
+                        tabla->parts[i].part_size = 0;
+                        tabla->parts[i].part_start = 0;
+                        tabla->parts[i].part_status = 'f';
+
+                        fp = fopen(path->val, "rb+");
+                        if(fp != NULL){
+                            fseek(fp, 0, SEEK_SET);
+                            fwrite(tabla, sizeof(MBR), 1, fp);
+
+                            fclose(fp);
+                            printf("Particion eliminada exitosamente.\n");
+                        }
+                        free(tabla);
+                        return true;
+                    } else if (strcmp(delete->val, "full") == 0) {
+                        fp = fopen(path->val, "rb+");
+                        if (fp != NULL){
+                            fseek(fp, tabla->parts[i].part_start, SEEK_SET);
+                            for (int j = 0; j < tabla->parts[i].part_size; j++) {
+                                fputc(0, fp);
+                            }
+
+                            tabla->parts[i].part_size = 0;
+                            tabla->parts[i].part_start = 0;
+                            tabla->parts[i].part_status = 'f';
+
+                            fseek(fp, 0, SEEK_SET);
+                            fwrite(tabla, sizeof(MBR), 1, fp);
+
+                            fclose(fp);
+                            printf("Particion eliminada exitosamente.\n");
+                        }
+                        free(tabla);
+                        return true;
+                    }
+
+                }
+            }
+
+            EBR *ebr_list = malloc(sizeof(EBR));
+            ebr_list->part_status = 0;
+
+            EBR *ebr_last;
+
+            for (int i = 0; i < 4; ++i) {
+                if (tabla->parts[i].part_status == 'a' && tabla->parts[i].part_type == 'e') {
+                    int st = tabla->parts[i].part_start;
+                    do {
+                        if ((fp = fopen(path->val, "rb+")) != NULL) {
+                            ebr_last = ebr_list;
+                            fseek(fp, st, SEEK_SET);
+                            fread(ebr_list, sizeof(EBR), 1, fp);
+
+                            if (ebr_list->part_status == 'a' && strcmp(ebr_list->part_name, name->val) == 0) {
+                                if (strcmp(delete->val, "fast") == 0){
+
+                                    if (ebr_last->part_status == 0){
+                                        ebr_list->part_status = 'f';
+                                        ebr_list->part_size = 0;
+
+                                        fseek(fp, ebr_list->part_start, SEEK_SET);
+                                        fwrite(ebr_list, sizeof(EBR), 1, fp);
+                                        fclose(fp);
+                                        printf("Particion eliminada exitosamente.\n");
+                                    } else {
+                                        ebr_last->part_next = ebr_list->part_next;
+
+                                        fseek(fp, ebr_last->part_start, SEEK_SET);
+                                        fwrite(ebr_last, sizeof(EBR), 1, fp);
+                                        fclose(fp);
+                                        printf("Particion eliminada exitosamente.\n");
+                                    }
+                                    free(tabla);
+                                    return true;
+
+                                } else if (strcmp(delete->val, "full")){
+                                    if (ebr_last->part_status == 0){
+                                        ebr_list->part_status = 'f';
+                                        ebr_list->part_size = 0;
+
+                                        fseek(fp, ebr_list->part_start + sizeof(EBR), SEEK_SET);
+                                        for (int j = 0; j < ebr_list->part_size - sizeof(EBR); ++j) {
+                                            fputc(0, fp);
+                                        }
+
+                                        fseek(fp, ebr_list->part_start, SEEK_SET);
+                                        fwrite(ebr_list, sizeof(EBR), 1, fp);
+                                        fclose(fp);
+                                        printf("Particion eliminada exitosamente.\n");
+                                    } else {
+                                        ebr_last->part_next = ebr_list->part_next;
+
+                                        fseek(fp, ebr_list->part_start, SEEK_SET);
+                                        for (int j = 0; j < ebr_list->part_size; ++j) {
+                                            fputc(0, fp);
+                                        }
+
+                                        fseek(fp, ebr_last->part_start, SEEK_SET);
+                                        fwrite(ebr_last, sizeof(EBR), 1, fp);
+                                        fclose(fp);
+                                        printf("Particion eliminada exitosamente.\n");
+                                    }
+                                    free(tabla);
+                                    return true;
+                                }
+                            }
+
+                            fclose(fp);
+                            st = ebr_list->part_next;
+                        }
+
+                    } while (ebr_list->part_next != -1);
+                }
+            }
+        }
     }
 
     free(tabla);
