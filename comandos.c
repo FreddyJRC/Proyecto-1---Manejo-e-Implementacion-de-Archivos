@@ -458,6 +458,110 @@ bool fdisk(list* list){
             free(tabla);
             return true;
         }
+
+    } else if (add != NULL){
+
+        int s = atoi(add->val); //Valor a agumentar/disminuir la particion.
+
+        if (unit == NULL) s = s * 1024;
+        else {
+            char u = tolower(unit->val[0]);
+            if (u == 'b');
+            else if (u == 'k') s = s * 1024;
+            else if (u == 'm') s = s * 1024 * 1024;
+            else {
+                printf("ERROR: unidad especificada no es valida.\n");
+                free(tabla);
+                return true;
+            }
+        }
+
+        for (int i = 0; i < 4; ++i) {
+            if (tabla->parts[i].part_status == 'a' && strcmp(tabla->parts[i].part_name, name->val) == 0){
+
+                if (i == 3) {
+                    if (((tabla->parts[i].part_start - 1) + tabla->parts[i].part_size + s) > tabla->parts[i].part_start &&
+                            ((tabla->parts[i].part_start - 1) + tabla->parts[i].part_size + s) <= tabla->mbr_size) {
+
+                        tabla->parts[i].part_size = tabla->parts[i].part_size + s;
+
+                        fp = fopen(path->val, "rb+");
+                        if(fp != NULL){
+                            fseek(fp, 0, SEEK_SET);
+                            fwrite(tabla, sizeof(MBR), 1, fp);
+
+                            fclose(fp);
+                            printf("Particion modificada exitosamente.\n");
+                        }
+                        free(tabla);
+                        return true;
+
+                    } else {
+                        printf("ERROR: espacio insuficiente.\n");
+                        free(tabla);
+                        return true;
+                    }
+                }
+
+
+                if (((tabla->parts[i].part_start - 1) + tabla->parts[i].part_size + s) > tabla->parts[i].part_start &&
+                    ((tabla->parts[i].part_start - 1) + tabla->parts[i].part_size + s)
+                        <= ((tabla->parts[i+1].part_status == 'a') ? tabla->parts[i+1].part_start : tabla->mbr_size)) {
+
+                    tabla->parts[i].part_size = tabla->parts[i].part_size + s;
+
+                    fp = fopen(path->val, "rb+");
+                    if(fp != NULL){
+                        fseek(fp, 0, SEEK_SET);
+                        fwrite(tabla, sizeof(MBR), 1, fp);
+
+                        fclose(fp);
+                        printf("Particion modificada exitosamente.\n");
+                    }
+                    free(tabla);
+                    return true;
+
+                }
+            }
+        }
+
+        EBR *ebr_list = malloc(sizeof(EBR));
+
+        for (int i = 0; i < 4; ++i) {
+            if (tabla->parts[i].part_status == 'a' && tabla->parts[i].part_type == 'e'){
+                int st = tabla->parts[i].part_start;
+                do {
+                    if((fp = fopen(path->val, "rb+")) != NULL) {
+                        fseek(fp, st, SEEK_SET);
+                        fread(ebr_list, sizeof(EBR), 1, fp);
+
+                        if (ebr_list->part_status == 'a' && strcmp(ebr_list->part_name, name->val) == 0){
+                            if (((ebr_list->part_start - 1) + ebr_list->part_size + s) > ebr_list->part_start &&
+                                    (ebr_list->part_start - 1) + ebr_list->part_size + s
+                                            <= ((ebr_list->part_next != -1) ? (ebr_list->part_next - 1)
+                                                    : ((tabla->parts[i].part_start - 1) + tabla->parts[i].part_size))) {
+
+                                ebr_list->part_size = ebr_list->part_size + s;
+
+                                fseek(fp, ebr_list->part_start, SEEK_SET);
+                                fwrite(ebr_list, sizeof(EBR), 1, fp);
+                                fclose(fp);
+                                free(ebr_list);
+                                free(tabla);
+
+                                printf("Particion logica modificada exitosamente.\n");
+                                return true;
+                            }
+                        }
+
+                        fclose(fp);
+                        st = ebr_list->part_next;
+                    }
+
+                } while (ebr_list->part_next != -1);
+            }
+        }
+
     }
 
     free(tabla);
