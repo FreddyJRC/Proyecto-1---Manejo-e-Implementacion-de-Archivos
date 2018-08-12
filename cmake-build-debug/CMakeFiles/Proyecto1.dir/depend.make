@@ -5,10 +5,12 @@ CMakeFiles/Proyecto1.dir/comandos.c.o: ../comandos.c
 CMakeFiles/Proyecto1.dir/comandos.c.o: ../comandos.h
 CMakeFiles/Proyecto1.dir/comandos.c.o: ../models/EBR.h
 CMakeFiles/Proyecto1.dir/comandos.c.o: ../models/MBR.h
+CMakeFiles/Proyecto1.dir/comandos.c.o: ../models/discos.h
 CMakeFiles/Proyecto1.dir/comandos.c.o: ../models/list.h
 
 CMakeFiles/Proyecto1.dir/main.c.o: ../comandos.h
 CMakeFiles/Proyecto1.dir/main.c.o: ../main.c
+CMakeFiles/Proyecto1.dir/main.c.o: ../models/discos.h
 CMakeFiles/Proyecto1.dir/main.c.o: ../models/list.h
 
 CMakeFiles/Proyecto1.dir/models/EBR.c.o: ../models/EBR.c

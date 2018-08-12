@@ -451,7 +451,7 @@ bool fdisk(list* list){
                     st = ebr_list->part_next;
                 }
 
-            } while (ebr_list->part_next != -1);
+            } while (st != -1);
 
 
             free(ebr_list);
@@ -558,7 +558,7 @@ bool fdisk(list* list){
                         st = ebr_list->part_next;
                     }
 
-                } while (ebr_list->part_next != -1);
+                } while (st != -1);
             }
         }
 
@@ -685,12 +685,221 @@ bool fdisk(list* list){
                             st = ebr_list->part_next;
                         }
 
-                    } while (ebr_list->part_next != -1);
+                    } while (st != -1);
                 }
             }
         }
     }
 
     free(tabla);
+    return true;
+}
+
+bool mount(list* list, disco **dsc){
+    node *path = NULL, *name = NULL;
+    node *actual = list->first;
+
+    while (actual != NULL){
+        if(strcmp(actual->flag, "path") == 0) { path = actual; }
+        if(strcmp(actual->flag, "name") == 0) { name = actual; }
+        actual = actual->next;
+    }
+    free(actual);
+
+    if (path == NULL || name == NULL){
+        printf("ERROR: Parametros obligatorios no encontrados.\n");
+        return true;
+    }
+
+    //-> VALIDAR QUE EXISTA.
+    FILE *fp;
+
+    if ((fp = fopen(path->val,"rb")) == NULL){
+        printf("ERROR: no fue posible arrir el archivo.\n");
+        return true;
+    }
+
+    MBR *tabla = malloc(sizeof(MBR));
+    fread(tabla, sizeof(MBR), 1, fp);
+    fclose(fp);
+
+    bool found = false;
+    int e = -1;
+    for (int i = 0; i < 4; ++i) {
+        if (strcmp(tabla->parts[i].part_name, name->val) == 0 && tabla->parts[i].part_status == 'a'){
+            found = true;
+            break;
+        } else if (tabla->parts[i].part_status == 'a' && tabla->parts[i].part_type == 'e'){
+            e = i;
+            break;
+        }
+    }
+
+    if (!found){
+        if(e == -1) {
+            printf("ERROR: Particion no encontrada.\n");
+            free(tabla);
+            return true;
+        } else {
+            EBR *ebr_list = malloc(sizeof(EBR));
+
+            int st = tabla->parts[e].part_start;
+            do {
+                if ((fp = fopen(path->val, "rb+")) != NULL) {
+                    fseek(fp, st, SEEK_SET);
+                    fread(ebr_list, sizeof(EBR), 1, fp);
+
+                    if (ebr_list->part_status == 'a' && strcmp(ebr_list->part_name, name->val) == 0) {
+                        found = true;
+                        break;
+                    }
+
+                }
+                fclose(fp);
+                st = ebr_list->part_next;
+            }while (st != -1);
+
+            if (!found){
+                printf("ERROR: Particion no encontrada.\n");
+                free(tabla);
+                return true;
+            }
+        }
+    }
+
+    disco *discos = *dsc;
+
+    if(discos->leter == '\0'){
+
+        particion *nueva = malloc(sizeof(particion));
+        nueva->id = 1;
+        strcpy(nueva->nombre, name->val);
+        nueva->next = NULL;
+
+        discos = malloc(sizeof(disco));
+
+        (discos)->leter = 'a';
+        discos->path = malloc(sizeof(path->val));
+        strcpy(discos->path, path->val);
+        (discos)->particiones = nueva;
+        (discos)->next = NULL;
+
+        printf("Mounted en: vd%c%d.\n", discos->leter, nueva->id);
+        *dsc = discos;
+    } else {
+        disco *pDisco = (discos);
+        while (pDisco != NULL){
+            if(strcmp(pDisco->path, path->val) == 0){
+                particion *pPart = pDisco->particiones;
+                if (pPart != NULL) {
+                    while (pPart->next != NULL) { pPart = pPart->next; }
+
+                    particion *nueva = malloc(sizeof(particion));
+                    nueva->next = NULL;
+                    nueva->id = pPart->id + 1;
+                    strcpy(nueva->nombre, name->val);
+                    pPart->next = nueva;
+
+                    printf("Mounted en: vd%c%d.\n", pDisco->leter, nueva->id);
+                } else {
+                    particion *nueva = malloc(sizeof(particion));
+                    nueva->next = NULL;
+                    nueva->id = 1;
+                    strcpy(nueva->nombre, name->val);
+                    pDisco->particiones = nueva;
+
+                    printf("Mounted en: vd%c%d.\n", pDisco->leter, nueva->id);
+                }
+
+                *dsc = discos;
+
+                return true;
+            }
+
+            pDisco = pDisco->next;
+        }
+
+        pDisco = discos;
+        while (pDisco->next != NULL) { pDisco = pDisco->next; }
+
+        particion *nueva = malloc(sizeof(particion));
+        nueva->next = NULL;
+        nueva->id = 1;
+        strcpy(nueva->nombre, name->val);
+
+        disco *nuevo = malloc(sizeof(disco) + sizeof(char [strlen(path->val)]));
+        nuevo->leter = (char)(((int)pDisco->leter) + 1);
+        nuevo->path = malloc(sizeof(path->val));
+        strcpy(nuevo->path, path->val);
+        nuevo->particiones = nueva;
+        nuevo->next = NULL;
+        pDisco->next = nuevo;
+
+        printf("Mounted en: vd%c%d.\n", pDisco->leter, nueva->id);
+        *dsc = discos;
+    }
+
+    return true;
+}
+
+bool unmount(list* list, disco **discos){
+    node *id = NULL;
+    node *actual = list->first;
+
+    while (actual != NULL){
+        if(strcmp(actual->flag, "id") == 0) { id = actual; }
+        actual = actual->next;
+    }
+    free(actual);
+
+    if (id == NULL){
+        printf("ERROR: parametros requeridos no encontrados.");
+        return true;
+    }
+
+    char d = id->val[2];
+    int p = atoi(&id->val[3]);
+
+    disco *pDisco = *discos;
+
+    while (pDisco != NULL){
+
+        if (pDisco->leter == d){
+            particion *currP, *prevP;
+
+            for (currP = pDisco->particiones; currP != NULL; prevP = currP, currP = currP->next) {
+
+                if (currP->id == p) {
+                    if (prevP == NULL) {
+                        pDisco->particiones = currP->next;
+                    } else {
+                        prevP->next = currP->next;
+                    }
+
+                    free(currP);
+                    printf("Particion desmontada.\n");
+                    return true;
+                }
+            }
+        }
+
+        pDisco = pDisco->next;
+    }
+
+    return true;
+}
+
+bool rep(list* list, disco **discos){
+    node *path = NULL, *name = NULL, *add = NULL;
+    node *actual = list->first;
+
+    while (actual != NULL){
+        if(strcmp(actual->flag, "path") == 0) { path = actual; }
+        if(strcmp(actual->flag, "name") == 0) { name = actual; }
+        if(strcmp(actual->flag, "add") == 0) { add = actual; }
+        actual = actual->next;
+    }
+    free(actual);
+
     return true;
 }

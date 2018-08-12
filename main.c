@@ -5,18 +5,21 @@
 #include <ctype.h>
 #include "comandos.h"
 #include "models/list.h"
+#include "models/discos.h"
 
 bool menu(char *command);
 bool abrir(list *pList);
 char *scanner(FILE* fp, size_t size);
-
 list *parse(char *command);
-
 char * concat(char *cat, char i);
+
+disco *mountedDisks;
 
 int main() {
     char *command;
     char *pos;
+    mountedDisks = malloc(sizeof(disco));
+    mountedDisks->leter = '\0';
     bool loop = true;
 
     printf("Manejo e Implementacion de Archivos\n"
@@ -54,6 +57,12 @@ bool menu(char *command) {
         res = rmdisk(flags);
     }else if(strcmp(flags->command, "fdisk") == 0){
         res = fdisk(flags);
+    }else if(strcmp(flags->command, "mount") == 0) {
+        res = mount(flags, &mountedDisks);
+    }else if(strcmp(flags->command, "unmount") == 0) {
+        res = unmount(flags, &mountedDisks);
+    }else if(strcmp(flags->command, "rep") == 0){
+        res = rep(flags, &mountedDisks);
     }
 
 //    printf("Comando: %s\n", flags->command);
