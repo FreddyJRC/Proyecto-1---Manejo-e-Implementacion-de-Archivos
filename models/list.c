@@ -16,7 +16,7 @@ list * newList(){
 node * addNode(list *list, char *flag) {
     node *tmp = malloc(sizeof(node));
     tmp->next = NULL;
-    tmp->flag = flag;
+    strcpy(tmp->flag, flag);
 
     if(list->first == NULL){
         list->first = tmp;

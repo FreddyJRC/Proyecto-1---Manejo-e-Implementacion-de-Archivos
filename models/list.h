@@ -6,13 +6,13 @@
 #define PROYECTO1_LIST_H
 
 typedef struct node {
-    char* flag;
-    char* val;
+    char flag[509];
+    char val[509];
     struct node *next;
 } node;
 
 typedef struct list {
-    char* command;
+    char command[509];
     struct node *first;
     struct node *last;
 } list;

@@ -15,7 +15,7 @@ typedef struct disco {
     char leter;
     struct disco *next;
     struct particion *particiones;
-    char *path;
+    char path[509];
 } disco;
 
 #endif //PROYECTO1_DISCOS_H

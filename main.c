@@ -137,7 +137,8 @@ list *parse(char *input) {
             if(*c != ' '){
                 cat = concat(cat, tolower(*c));
             }else{
-                res->command = cat;
+                strcpy(res->command, cat);
+
                 cat = "";
                 status = 1;
             }
@@ -158,7 +159,7 @@ list *parse(char *input) {
                 if (string){
                     cat = concat(cat, *c);
                 }else{
-                    newNode->val = cat;
+                    strcpy(newNode->val, cat);
 
                     cat = "";
                     status = 1;
