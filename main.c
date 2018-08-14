@@ -97,6 +97,9 @@ bool abrir(list *flags) {
         if ((pos=strchr(line, '\n')) != NULL)
             *pos = '\0';
 
+        if ((pos=strchr(line, '\r')) != NULL)
+            *pos = '\0';
+
         printf("->%s\n", line);
         res = menu(line);
         if (!res) break;
@@ -134,8 +137,10 @@ list *parse(char *input) {
 
     do{
         if (status == 0){
-            if(*c != ' '){
+            if(*c != ' ') {
                 cat = concat(cat, tolower(*c));
+            }else if(*c == '#'){
+                status = 3;
             }else{
                 strcpy(res->command, cat);
 
@@ -143,12 +148,14 @@ list *parse(char *input) {
                 status = 1;
             }
         }else if(status == 1){
-            if(*c == '-'){ }
-            else if(*c == '>'){
+            if(*c == '-'/* || *c == '–'*/){ }
+            else if(*c == '>') {
                 newNode = addNode(res, cat);
 
                 cat = "";
                 status = 2;
+            }else if(*c == '#'){
+                status = 3;
             }else if(*c != ' '){
                 cat = concat(cat, tolower(*c));
             }
@@ -168,7 +175,7 @@ list *parse(char *input) {
             }else{
                 cat = concat(cat, *c);
             }
-        }
+        }else{ }
 
         if(*c == '\0') { break; }
 

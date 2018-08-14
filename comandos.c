@@ -13,18 +13,25 @@ bool mkdisk(list* list){
     node *size = NULL;
     node *path = NULL;
     node *unit = NULL;
+    node *other = NULL;
     node *actual = list->first;
 
     while (actual != NULL){
         if(strcmp(actual->flag, "size") == 0) { size = actual; }
-        if(strcmp(actual->flag, "path") == 0) { path = actual; }
-        if(strcmp(actual->flag, "unit") == 0) { unit = actual; }
+        else if(strcmp(actual->flag, "path") == 0) { path = actual; }
+        else if(strcmp(actual->flag, "unit") == 0) { unit = actual; }
+        else {other = actual; }
         actual = actual->next;
     }
     free(actual);
 
     if(size == NULL || path == NULL) {
         printf("ERROR: Parametros obligatorios no han sido especificados.\n");
+        return true;
+    }
+
+    if(other != NULL){
+        printf("ERROR: Parametros erroneos ingresados.\n");
         return true;
     }
 
@@ -96,10 +103,12 @@ bool mkdisk(list* list){
 
 bool rmdisk(list* list){
     node *path = NULL;
+    node *other = NULL;
     node *actual = list->first;
 
     while (actual != NULL){
         if(strcmp(actual->flag, "path") == 0) { path = actual; }
+        else { other = actual; }
         actual = actual->next;
     }
     free(actual);
@@ -107,6 +116,10 @@ bool rmdisk(list* list){
     if(path == NULL){
         printf("ERROR: Parametros obligatorios no especificados.\n");
         return true;
+    }
+
+    if(other != NULL){
+        printf("ERROR: Parametros erroneos ingresados.\n");
     }
 
     if(remove(path->val) == 0)
@@ -120,23 +133,30 @@ bool rmdisk(list* list){
 bool fdisk(list* list){
     node *path = NULL, *size = NULL, *unit = NULL, *type = NULL;
     node *fit = NULL, *delete = NULL, *name = NULL, *add = NULL;
+    node *other = NULL;
     node *actual = list->first;
 
     while (actual != NULL){
         if(strcmp(actual->flag, "path") == 0) { path = actual; }
-        if(strcmp(actual->flag, "size") == 0) { size = actual; }
-        if(strcmp(actual->flag, "unit") == 0) { unit = actual; }
-        if(strcmp(actual->flag, "type") == 0) { type = actual; }
-        if(strcmp(actual->flag, "fit") == 0) { fit = actual; }
-        if(strcmp(actual->flag, "delete") == 0) { delete = actual; }
-        if(strcmp(actual->flag, "name") == 0) { name = actual; }
-        if(strcmp(actual->flag, "add") == 0) { add = actual; }
+        else if(strcmp(actual->flag, "size") == 0) { size = actual; }
+        else if(strcmp(actual->flag, "unit") == 0) { unit = actual; }
+        else if(strcmp(actual->flag, "type") == 0) { type = actual; }
+        else if(strcmp(actual->flag, "fit") == 0) { fit = actual; }
+        else if(strcmp(actual->flag, "delete") == 0) { delete = actual; }
+        else if(strcmp(actual->flag, "name") == 0) { name = actual; }
+        else if(strcmp(actual->flag, "add") == 0) { add = actual; }
+        else { other = actual; }
         actual = actual->next;
     }
     free(actual);
 
     if(path == NULL || name == NULL) {
         printf("ERROR: parametros obligatorios no especificados.\n");
+        return true;
+    }
+
+    if(other != NULL){
+        printf("ERROR: Parametros erroneos ingresados.\n");
         return true;
     }
 
@@ -274,7 +294,7 @@ bool fdisk(list* list){
                             }
                         }
 
-                        tabla->parts[i+1] = newPart('a', t, f, st + 1, s, name->val);
+                        tabla->parts[i+1] = newPart('a', t, f, tabla->parts[i].part_start + tabla->parts[i].part_size, s, name->val);
                         break;
                     }
                 }
@@ -299,7 +319,7 @@ bool fdisk(list* list){
                 fclose(fp);
                 printf("Particion creada exitosamente.\n");
             }
-        } else {
+        } else if (t == 'l') {
             /*CREACION DE PARTICIONES LOGICAS*/
             part extended_part;
             extended_part.part_status = -1;
@@ -338,7 +358,7 @@ bool fdisk(list* list){
 
             if (ebr_list->part_status == 'f') {
                 if (ebr_list->part_next == -1){
-                    if ((s) <= (extended_part.part_size - (extended_part.part_start - 1))){
+                    if ((s) <= (extended_part.part_size)){
                         ebr_list->part_start = ebr_list->part_start;
                         ebr_list->part_size = s;
                         ebr_list->part_next = -1;
@@ -634,14 +654,15 @@ bool fdisk(list* list){
             EBR *ebr_list = malloc(sizeof(EBR));
             ebr_list->part_status = 0;
 
-            EBR *ebr_last;
+            EBR *ebr_last = malloc(sizeof(EBR));
+            ebr_last->part_status = 0;
 
             for (int i = 0; i < 4; ++i) {
                 if (tabla->parts[i].part_status == 'a' && tabla->parts[i].part_type == 'e') {
                     int st = tabla->parts[i].part_start;
                     do {
                         if ((fp = fopen(path->val, "rb+")) != NULL) {
-                            ebr_last = ebr_list;
+                            *ebr_last = *ebr_list;
                             fseek(fp, st, SEEK_SET);
                             fread(ebr_list, sizeof(EBR), 1, fp);
 
@@ -718,17 +739,24 @@ bool fdisk(list* list){
 
 bool mount(list* list, disco **dsc){
     node *path = NULL, *name = NULL;
+    node *other = NULL;
     node *actual = list->first;
 
     while (actual != NULL){
         if(strcmp(actual->flag, "path") == 0) { path = actual; }
-        if(strcmp(actual->flag, "name") == 0) { name = actual; }
+        else if(strcmp(actual->flag, "name") == 0) { name = actual; }
+        else { other = actual; }
         actual = actual->next;
     }
     free(actual);
 
     if (path == NULL || name == NULL){
         printf("ERROR: Parametros obligatorios no encontrados.\n");
+        return true;
+    }
+
+    if (other != NULL){
+        printf("ERROR: Parametros erroneos ingresados.\n");
         return true;
     }
 
@@ -867,16 +895,23 @@ bool mount(list* list, disco **dsc){
 
 bool unmount(list* list, disco **discos){
     node *id = NULL;
+    node *other = NULL;
     node *actual = list->first;
 
     while (actual != NULL){
         if(strcmp(actual->flag, "id") == 0) { id = actual; }
+        else { other = actual; }
         actual = actual->next;
     }
     free(actual);
 
     if (id == NULL){
         printf("ERROR: parametros requeridos no encontrados.");
+        return true;
+    }
+
+    if (other != NULL){
+        printf("ERROR: Parametros erroneos ingresados.\n");
         return true;
     }
 
@@ -913,17 +948,29 @@ bool unmount(list* list, disco **discos){
         pDisco = pDisco->next;
     }
 
+    printf("ERROR: Particion no encontrada.\n");
     return true;
+}
+
+const char *getExt (const char *fspec) {
+    char *e = strrchr (fspec, '.');
+    if (e == NULL)
+        e = ""; // fast method, could also use &(fspec[strlen(fspec)]).
+    else
+        e++;
+    return e;
 }
 
 bool rep(list* list, disco **discos){
     node *path = NULL, *name = NULL, *id = NULL;
+    node *other = NULL;
     node *actual = list->first;
 
     while (actual != NULL){
         if(strcmp(actual->flag, "path") == 0) { path = actual; }
-        if(strcmp(actual->flag, "name") == 0) { name = actual; }
-        if(strcmp(actual->flag, "id") == 0) { id = actual; }
+        else if(strcmp(actual->flag, "name") == 0) { name = actual; }
+        else if(strcmp(actual->flag, "id") == 0) { id = actual; }
+        else { other = actual; }
         actual = actual->next;
     }
     free(actual);
@@ -931,6 +978,263 @@ bool rep(list* list, disco **discos){
     if(path == NULL || name == NULL || id == NULL){
         printf("ERROR: Parametros requeridos no encontrados.\n");
         return true;
+    }
+
+    if (other != NULL){
+        printf("ERROR: Parametros erroneos ingresados.\n");
+        return true;
+    }
+
+    char d = id->val[2];
+    int p = atoi(&id->val[3]);
+
+    disco *pDisco = *discos;
+    char dirDisco[509];
+
+    while (pDisco != NULL){
+
+        if (pDisco->leter == d){
+            strcpy(dirDisco, pDisco->path);
+        }
+
+        pDisco = pDisco->next;
+    }
+    free(pDisco);
+
+    FILE *fp, *fq;
+
+    if ((fq = fopen(dirDisco, "rb")) == NULL){
+        printf("ERROR: Disco no encontrado.\n");
+        return true;
+    }
+
+    MBR *tabla = malloc(sizeof(MBR));
+    fread(tabla, sizeof(MBR), 1, fq);
+    fclose(fq);
+
+    char* t1 = strdup(path->val);
+    char* dir = dirname(t1);
+    if(stat(dir, NULL) == -1){
+        char buffer[1024];
+        snprintf(buffer, sizeof(buffer), "mkdir -p \"%s\"", dir);
+        system(buffer);
+    }
+    free(t1);
+
+    int e = -1;
+
+    for (int k = 0; k < name->val[k]; ++k) {
+        name->val[k] = tolower(name->val[k]);
+    }
+
+    if (strcmp(name->val, "mbr") == 0){
+        char dot[1024];
+        snprintf(dot, sizeof(dot), "%s.dot", path->val);
+        if((fp = fopen(dot, "w")) != NULL){
+            fwrite("digraph G{\n", sizeof(char) *11, 1, fp);
+            char line[1024];
+
+            snprintf(line, sizeof(line),
+                    "disco [shape = record, label=\"{{Nombre | Valor} | {MBR_size | %d} | {MBR_fecha | %s} | {MBR_disk_signature | %d}",
+                    tabla->mbr_size, tabla->mbr_creation_date, tabla->mbr_disk_signature);
+
+            fwrite(line, strlen(line), 1, fp);
+
+            for (int i = 0; i < 4; ++i) {
+                if (tabla->parts[i].part_status == 'a') {
+                    snprintf(line, sizeof(line),
+                             "| {part_status_%d | %c} | {part_type_%d | %c} | {part_fit_%d | %c} | {part_start_%d | %d} | {part_size_%d | %d} | {part_name_%d | %s}",
+                             i, tabla->parts[i].part_status,
+                             i, tabla->parts[i].part_type,
+                             i, tabla->parts[i].part_fit,
+                             i, tabla->parts[i].part_start,
+                             i, tabla->parts[i].part_size,
+                             i, tabla->parts[i].part_name);
+
+                    e = (tabla->parts[i].part_type == 'e') ? i : e;
+
+                    fwrite(line, strlen(line), 1, fp);
+                }
+            }
+
+            fwrite("}\"];\n", sizeof(char) * 5, 1, fp);
+            fclose(fp);
+
+            if(e != -1) {
+                EBR *ebr_list = malloc(sizeof(EBR));
+
+                int st = tabla->parts[e].part_start;
+                while (st != -1) {
+                    if ((fq = fopen(dirDisco, "rb")) != NULL) {
+                        fseek(fq, st, SEEK_SET);
+                        fread(ebr_list, sizeof(EBR), 1, fq);
+                        fclose(fq);
+
+                        if (ebr_list->part_status == 'a') {
+                            snprintf(line, sizeof(line),
+                                     "logica_%d [shape = record, label=\"{{Nombre | Valor} | {part_status | %c} | {part_fit | %c} | {part_start | %d} | {part_size | %d} | {part_next | %d} | {part_name | %s}}\"];\n",
+                                     e, ebr_list->part_status, ebr_list->part_fit, ebr_list->part_start,
+                                     ebr_list->part_size, ebr_list->part_next, ebr_list->part_name);
+
+                            e++;
+                            if((fp = fopen(dot, "a")) != NULL) {
+                                fwrite(line, strlen(line), 1, fp);
+                                fclose(fp);
+                            }
+                        }
+
+                    }
+
+                    st = ebr_list->part_next;
+                }
+                free(ebr_list);
+            }
+
+            if((fp = fopen(dot, "a")) != NULL) {
+                fwrite("}", sizeof(char), 1, fp);
+                fclose(fp);
+            }
+
+
+            char buffer[1024];
+            snprintf(buffer, sizeof(buffer), "dot -T%s \"%s\" -o \"%s\"", getExt(path->val), dot, path->val);
+            system(buffer);
+            printf("Reporte generado.\n");
+        }
+    } else if (strcmp(name->val, "disk") == 0) {
+        char dot[1024];
+        snprintf(dot, sizeof(dot), "%s.dot", path->val);
+        if((fp = fopen(dot, "w")) != NULL){
+            fwrite("digraph G{\n", sizeof(char) *11, 1, fp);
+            char line[1024];
+
+            snprintf(line, sizeof(line),
+                     "disco [shape = record, label=< <TABLE WIDTH=\"100%%\" BORDER=\"1\" CELLBORDER=\"1\" CELLPADDING=\"4\">\n <TR>\n");
+
+            fwrite(line, strlen(line), 1, fp);
+
+            snprintf(line, sizeof(line),
+                    "<TD ROWSPAN=\"2\" WIDTH=\"%.2f%%\">MBR</TD>\n",
+                     (float)sizeof(MBR)/tabla->mbr_size*100.0);
+
+            fwrite(line, strlen(line), 1, fp);
+
+            int lp = sizeof(MBR);
+
+            for (int i = 0; i < 4; ++i) {
+                if (tabla->parts[i].part_status == 'a') {
+
+                    if (tabla->parts[i].part_start - lp > 1){
+                        snprintf(line, sizeof(line),
+                                 "<TD ROWSPAN=\"2\" WIDTH=\"%.2f%%\">LIBRE<BR/>%.2f%% del disco </TD>\n",
+                                 (float)(tabla->parts[i].part_start - 1 - lp)/tabla->mbr_size*100.0,
+                                 (float)(tabla->parts[i].part_start - 1 - lp)/tabla->mbr_size*100.0);
+
+                        fwrite(line, strlen(line), 1, fp);
+                    }
+
+                    snprintf(line, sizeof(line),
+                             "<TD ROWSPAN=\"%d\" WIDTH=\"%.2f%%\">%s<BR/>%.2f%% del disco </TD>\n",
+                             (tabla->parts[i].part_type == 'e') ? 1 : 2,
+                             (float)tabla->parts[i].part_size/tabla->mbr_size * 100.0,
+                             (tabla->parts[i].part_type == 'p') ? "Primaria" : "Extendida",
+                             (float)tabla->parts[i].part_size/tabla->mbr_size * 100.0);
+
+                    e = (tabla->parts[i].part_type == 'e') ? i : e;
+                    lp = (tabla->parts[i].part_start - 1) + tabla->parts[i].part_size;
+
+                    fwrite(line, strlen(line), 1, fp);
+                }
+            }
+
+            if(tabla->mbr_size > lp){
+                snprintf(line, sizeof(line),
+                         "<TD ROWSPAN=\"2\" WIDTH=\"%.2f%%\">LIBRE<BR/>%.2f%% del disco </TD>\n",
+                         (float)(tabla->mbr_size - lp)/tabla->mbr_size*100.0,
+                         (float)(tabla->mbr_size - lp)/tabla->mbr_size*100.0);
+
+                fwrite(line, strlen(line), 1, fp);
+            }
+
+            fwrite("</TR>\n", sizeof(char) * 6, 1, fp);
+            fclose(fp);
+
+            if(e != -1) {
+                if((fp = fopen(dot, "a")) != NULL) {
+                    fwrite("<TR><TD>\n<TABLE BORDER=\"0\" CELLBORDER=\"1\">\n<TR>\n", sizeof(char)*48, 1, fp);
+                    fclose(fp);
+                }
+
+                EBR *ebr_list = malloc(sizeof(EBR));
+
+                int st = tabla->parts[e].part_start;
+                while (st != -1) {
+                    if ((fq = fopen(dirDisco, "rb")) != NULL) {
+                        fseek(fq, st, SEEK_SET);
+                        fread(ebr_list, sizeof(EBR), 1, fq);
+                        fclose(fq);
+
+                        snprintf(line, sizeof(line),
+                                 "<TD WIDTH=\"%.2f%%\">EBR</TD>\n",
+                                 (float)sizeof(MBR)/tabla->mbr_size*100.0);
+
+                        if((fp = fopen(dot, "a")) != NULL) {
+                            fwrite(line, strlen(line), 1, fp);
+                            fclose(fp);
+                        }
+
+                        if (ebr_list->part_status == 'a') {
+                            snprintf(line, sizeof(line),
+                                     "<TD>LOGICA<BR/>%.2f%% del disco </TD>\n",
+                                     (float)ebr_list->part_size/tabla->mbr_size*100.0);
+
+                            if((fp = fopen(dot, "a")) != NULL) {
+                                fwrite(line, strlen(line), 1, fp);
+                                fclose(fp);
+                            }
+
+
+                        }
+
+                        int freeSpace = (((ebr_list->part_next != -1) ? ebr_list->part_next :
+                                          (tabla->parts[e].part_start + tabla->parts[e].part_size))
+                                         - ((ebr_list->part_start - 1) + ebr_list->part_size));
+
+                        if (freeSpace > 1)
+                        {
+                            snprintf(line, sizeof(line),
+                                     "<TD>LIBRE<BR/>%.2f%% del disco </TD>\n",
+                                     (float)(freeSpace - 1)/tabla->mbr_size*100.0);
+
+                            if((fp = fopen(dot, "a")) != NULL) {
+                                fwrite(line, strlen(line), 1, fp);
+                                fclose(fp);
+                            }
+                        }
+
+                    }
+
+                    st = ebr_list->part_next;
+                }
+                free(ebr_list);
+
+                if((fp = fopen(dot, "a")) != NULL) {
+                    fwrite("\n</TR>\n</TABLE>\n</TD>\n</TR>\n", sizeof(char)*28, 1, fp);
+                    fclose(fp);
+                }
+            }
+
+            if((fp = fopen(dot, "a")) != NULL) {
+                fwrite("</TABLE> >];}", sizeof(char)*13, 1, fp);
+                fclose(fp);
+            }
+
+
+            char buffer[1024];
+            snprintf(buffer, sizeof(buffer), "dot -T%s \"%s\" -o \"%s\"", getExt(path->val), dot, path->val);
+            system(buffer);
+            printf("Reporte generado.\n");
+        }
     }
 
     return true;
