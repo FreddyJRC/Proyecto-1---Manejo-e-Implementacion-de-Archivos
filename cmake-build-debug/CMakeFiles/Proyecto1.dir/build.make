@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/freddy/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/182.3684.76/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /home/freddy/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/182.3911.40/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /home/freddy/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/182.3684.76/bin/cmake/linux/bin/cmake -E remove -f
+RM = /home/freddy/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/182.3911.40/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1
+CMAKE_SOURCE_DIR = /home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/cmake-build-debug
+CMAKE_BINARY_DIR = /home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Proyecto1.dir/depend.make
@@ -59,68 +59,68 @@ include CMakeFiles/Proyecto1.dir/flags.make
 
 CMakeFiles/Proyecto1.dir/main.c.o: CMakeFiles/Proyecto1.dir/flags.make
 CMakeFiles/Proyecto1.dir/main.c.o: ../main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/Proyecto1.dir/main.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Proyecto1.dir/main.c.o   -c /home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/main.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/Proyecto1.dir/main.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Proyecto1.dir/main.c.o   -c /home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/main.c
 
 CMakeFiles/Proyecto1.dir/main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Proyecto1.dir/main.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/main.c > CMakeFiles/Proyecto1.dir/main.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/main.c > CMakeFiles/Proyecto1.dir/main.c.i
 
 CMakeFiles/Proyecto1.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Proyecto1.dir/main.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/main.c -o CMakeFiles/Proyecto1.dir/main.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/main.c -o CMakeFiles/Proyecto1.dir/main.c.s
 
 CMakeFiles/Proyecto1.dir/models/list.c.o: CMakeFiles/Proyecto1.dir/flags.make
 CMakeFiles/Proyecto1.dir/models/list.c.o: ../models/list.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Proyecto1.dir/models/list.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Proyecto1.dir/models/list.c.o   -c /home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/models/list.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Proyecto1.dir/models/list.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Proyecto1.dir/models/list.c.o   -c /home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/models/list.c
 
 CMakeFiles/Proyecto1.dir/models/list.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Proyecto1.dir/models/list.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/models/list.c > CMakeFiles/Proyecto1.dir/models/list.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/models/list.c > CMakeFiles/Proyecto1.dir/models/list.c.i
 
 CMakeFiles/Proyecto1.dir/models/list.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Proyecto1.dir/models/list.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/models/list.c -o CMakeFiles/Proyecto1.dir/models/list.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/models/list.c -o CMakeFiles/Proyecto1.dir/models/list.c.s
 
 CMakeFiles/Proyecto1.dir/comandos.c.o: CMakeFiles/Proyecto1.dir/flags.make
 CMakeFiles/Proyecto1.dir/comandos.c.o: ../comandos.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Proyecto1.dir/comandos.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Proyecto1.dir/comandos.c.o   -c /home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/comandos.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Proyecto1.dir/comandos.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Proyecto1.dir/comandos.c.o   -c /home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/comandos.c
 
 CMakeFiles/Proyecto1.dir/comandos.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Proyecto1.dir/comandos.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/comandos.c > CMakeFiles/Proyecto1.dir/comandos.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/comandos.c > CMakeFiles/Proyecto1.dir/comandos.c.i
 
 CMakeFiles/Proyecto1.dir/comandos.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Proyecto1.dir/comandos.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/comandos.c -o CMakeFiles/Proyecto1.dir/comandos.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/comandos.c -o CMakeFiles/Proyecto1.dir/comandos.c.s
 
 CMakeFiles/Proyecto1.dir/models/MBR.c.o: CMakeFiles/Proyecto1.dir/flags.make
 CMakeFiles/Proyecto1.dir/models/MBR.c.o: ../models/MBR.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/Proyecto1.dir/models/MBR.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Proyecto1.dir/models/MBR.c.o   -c /home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/models/MBR.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/Proyecto1.dir/models/MBR.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Proyecto1.dir/models/MBR.c.o   -c /home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/models/MBR.c
 
 CMakeFiles/Proyecto1.dir/models/MBR.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Proyecto1.dir/models/MBR.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/models/MBR.c > CMakeFiles/Proyecto1.dir/models/MBR.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/models/MBR.c > CMakeFiles/Proyecto1.dir/models/MBR.c.i
 
 CMakeFiles/Proyecto1.dir/models/MBR.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Proyecto1.dir/models/MBR.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/models/MBR.c -o CMakeFiles/Proyecto1.dir/models/MBR.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/models/MBR.c -o CMakeFiles/Proyecto1.dir/models/MBR.c.s
 
 CMakeFiles/Proyecto1.dir/models/EBR.c.o: CMakeFiles/Proyecto1.dir/flags.make
 CMakeFiles/Proyecto1.dir/models/EBR.c.o: ../models/EBR.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/Proyecto1.dir/models/EBR.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Proyecto1.dir/models/EBR.c.o   -c /home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/models/EBR.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/Proyecto1.dir/models/EBR.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Proyecto1.dir/models/EBR.c.o   -c /home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/models/EBR.c
 
 CMakeFiles/Proyecto1.dir/models/EBR.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Proyecto1.dir/models/EBR.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/models/EBR.c > CMakeFiles/Proyecto1.dir/models/EBR.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/models/EBR.c > CMakeFiles/Proyecto1.dir/models/EBR.c.i
 
 CMakeFiles/Proyecto1.dir/models/EBR.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Proyecto1.dir/models/EBR.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/models/EBR.c -o CMakeFiles/Proyecto1.dir/models/EBR.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/models/EBR.c -o CMakeFiles/Proyecto1.dir/models/EBR.c.s
 
 # Object files for target Proyecto1
 Proyecto1_OBJECTS = \
@@ -140,7 +140,7 @@ Proyecto1: CMakeFiles/Proyecto1.dir/models/MBR.c.o
 Proyecto1: CMakeFiles/Proyecto1.dir/models/EBR.c.o
 Proyecto1: CMakeFiles/Proyecto1.dir/build.make
 Proyecto1: CMakeFiles/Proyecto1.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C executable Proyecto1"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C executable Proyecto1"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Proyecto1.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -153,6 +153,6 @@ CMakeFiles/Proyecto1.dir/clean:
 .PHONY : CMakeFiles/Proyecto1.dir/clean
 
 CMakeFiles/Proyecto1.dir/depend:
-	cd /home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1 /home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1 /home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/cmake-build-debug /home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/cmake-build-debug /home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/cmake-build-debug/CMakeFiles/Proyecto1.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos /home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos /home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/cmake-build-debug /home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/cmake-build-debug /home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/cmake-build-debug/CMakeFiles/Proyecto1.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/Proyecto1.dir/depend
 

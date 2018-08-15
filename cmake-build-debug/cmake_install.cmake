@@ -1,4 +1,4 @@
-# Install script for directory: /home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1
+# Install script for directory: /home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

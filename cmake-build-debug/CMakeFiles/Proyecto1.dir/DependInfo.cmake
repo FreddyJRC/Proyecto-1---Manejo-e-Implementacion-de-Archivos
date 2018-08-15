@@ -4,11 +4,11 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/comandos.c" "/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/cmake-build-debug/CMakeFiles/Proyecto1.dir/comandos.c.o"
-  "/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/main.c" "/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/cmake-build-debug/CMakeFiles/Proyecto1.dir/main.c.o"
-  "/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/models/EBR.c" "/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/cmake-build-debug/CMakeFiles/Proyecto1.dir/models/EBR.c.o"
-  "/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/models/MBR.c" "/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/cmake-build-debug/CMakeFiles/Proyecto1.dir/models/MBR.c.o"
-  "/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/models/list.c" "/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/cmake-build-debug/CMakeFiles/Proyecto1.dir/models/list.c.o"
+  "/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/comandos.c" "/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/cmake-build-debug/CMakeFiles/Proyecto1.dir/comandos.c.o"
+  "/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/main.c" "/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/cmake-build-debug/CMakeFiles/Proyecto1.dir/main.c.o"
+  "/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/models/EBR.c" "/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/cmake-build-debug/CMakeFiles/Proyecto1.dir/models/EBR.c.o"
+  "/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/models/MBR.c" "/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/cmake-build-debug/CMakeFiles/Proyecto1.dir/models/MBR.c.o"
+  "/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/models/list.c" "/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/cmake-build-debug/CMakeFiles/Proyecto1.dir/models/list.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
