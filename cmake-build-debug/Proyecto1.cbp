@@ -97,10 +97,16 @@
 		<Unit filename="/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/models/MBR.h">
 			<Option target="Proyecto1"/>
 		</Unit>
-		<Unit filename="/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/models/discos.h">
+		<Unit filename="/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/models/block.h">
 			<Option target="Proyecto1"/>
 		</Unit>
-		<Unit filename="/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/models/list.c">
+		<Unit filename="/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/models/discos.h">
+			<Option target="Proyecto1"/>
+		</Unit>
+		<Unit filename="/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/models/inodo.h">
+			<Option target="Proyecto1"/>
+		</Unit>
+		<Unit filename="/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/models/list.c">
 			<Option target="Proyecto1"/>
 		</Unit>
 		<Unit filename="/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/models/list.h">
