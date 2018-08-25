@@ -1,4 +1,11 @@
-/home/freddy/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/182.3684.76/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1
+/home/freddy/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/182.3911.40/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos
+-- The C compiler identification is GNU 8.2.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/cmake-build-debug
+-- Build files have been written to: /home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/cmake-build-debug

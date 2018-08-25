@@ -122,10 +122,18 @@ bool rmdisk(list* list){
         printf("ERROR: Parametros erroneos ingresados.\n");
     }
 
-    if(remove(path->val) == 0)
-        printf("Disco eliminado exitosamente.\n");
-    else
-        printf("ERROR: No se ha podido eliminar el disco especificado.\n");
+    printf("Seguro que desea eliminar el disco %s [Y/n]:", path->val);
+    char v[5] = {0};
+    fgets(v, sizeof(v), stdin);
+
+    if (tolower(v[0]) == 'y') {
+
+        if (remove(path->val) == 0)
+            printf("Disco eliminado exitosamente.\n");
+        else
+            printf("ERROR: No se ha podido eliminar el disco especificado.\n");
+
+    }
 
     return true;
 }
@@ -177,17 +185,6 @@ bool fdisk(list* list){
     fclose(fp);
 
     if(size != NULL) {
-        int part_available = 1;
-
-        for (int i = 0; i < 4; ++i) {
-            part_available = part_available * ((tabla->parts[i].part_status == 'f') ? 0 : 1);
-        }
-
-        if(part_available){
-            printf("ERROR: Limite de particiones posibles excedido.\n");
-            free(tabla);
-            return true;
-        }
 
         int s = atoi(size->val);
 
@@ -247,6 +244,17 @@ bool fdisk(list* list){
 
         if (t == 'p' || t == 'e') {
 
+            int part_available = 1;
+
+            for (int i = 0; i < 4; ++i) {
+                part_available = part_available * ((tabla->parts[i].part_status == 'f') ? 0 : 1);
+            }
+
+            if(part_available){
+                printf("ERROR: Limite de particiones posibles excedido.\n");
+                free(tabla);
+                return true;
+            }
 
             if (t == 'e') {
                 for (int i = 0; i < 4; ++i) {
@@ -584,6 +592,10 @@ bool fdisk(list* list){
             }
         }
 
+        free(ebr_list);
+        free(tabla);
+        return true;
+
     } else if (delete != NULL){
         printf("Seguro que desea eliminar la particion %s [Y/n]:", name->val);
         char v[5] = {0};
@@ -727,11 +739,15 @@ bool fdisk(list* list){
                     } while (st != -1);
                 }
             }
-        }
-        printf("ERROR: Particion no encontrada.\n");
-    }
 
-    if (fp != NULL) fclose(fp);
+            printf("ERROR: Particion no encontrada.\n");
+
+        } else if(tolower(v[0]) == 'n') {
+            free(tabla);
+            return true;
+        }
+
+    }
 
     free(tabla);
     return true;

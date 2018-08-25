@@ -8,105 +8,105 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/cmake-build-debug"/>
+				<Option working_dir="/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/cmake-build-debug"/>
+				<Option working_dir="/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/cmake-build-debug"/>
+				<Option working_dir="/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Proyecto1">
-				<Option output="/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/cmake-build-debug/Proyecto1" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/cmake-build-debug"/>
+				<Option output="/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/cmake-build-debug/Proyecto1" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/8.1.1/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.0/include"/>
 					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/8.1.1/include-fixed"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.0/include-fixed"/>
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/cmake-build-debug/Makefile&quot;  VERBOSE=1 Proyecto1"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/cmake-build-debug/Makefile&quot;  VERBOSE=1 Proyecto1"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Proyecto1/fast">
-				<Option output="/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/cmake-build-debug/Proyecto1" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/cmake-build-debug"/>
+				<Option output="/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/cmake-build-debug/Proyecto1" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/8.1.1/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.0/include"/>
 					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/8.1.1/include-fixed"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/8.2.0/include-fixed"/>
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/cmake-build-debug/Makefile&quot;  VERBOSE=1 Proyecto1/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/cmake-build-debug/Makefile&quot;  VERBOSE=1 Proyecto1/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/comandos.c">
+		<Unit filename="/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/comandos.c">
 			<Option target="Proyecto1"/>
 		</Unit>
-		<Unit filename="/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/comandos.h">
+		<Unit filename="/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/comandos.h">
 			<Option target="Proyecto1"/>
 		</Unit>
-		<Unit filename="/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/main.c">
+		<Unit filename="/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/main.c">
 			<Option target="Proyecto1"/>
 		</Unit>
-		<Unit filename="/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/models/EBR.c">
+		<Unit filename="/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/models/EBR.c">
 			<Option target="Proyecto1"/>
 		</Unit>
-		<Unit filename="/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/models/EBR.h">
+		<Unit filename="/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/models/EBR.h">
 			<Option target="Proyecto1"/>
 		</Unit>
-		<Unit filename="/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/models/MBR.c">
+		<Unit filename="/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/models/MBR.c">
 			<Option target="Proyecto1"/>
 		</Unit>
-		<Unit filename="/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/models/MBR.h">
+		<Unit filename="/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/models/MBR.h">
 			<Option target="Proyecto1"/>
 		</Unit>
-		<Unit filename="/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/models/discos.h">
+		<Unit filename="/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/models/discos.h">
 			<Option target="Proyecto1"/>
 		</Unit>
-		<Unit filename="/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/models/list.c">
+		<Unit filename="/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/models/list.c">
 			<Option target="Proyecto1"/>
 		</Unit>
-		<Unit filename="/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/models/list.h">
+		<Unit filename="/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/models/list.h">
 			<Option target="Proyecto1"/>
 		</Unit>
-		<Unit filename="/home/freddy/Documents/U/2018/2doSemestre/MIA/Proyecto1/CMakeLists.txt">
+		<Unit filename="/home/freddy/Documents/U/2018/2do/MIA/Proyecto-1---Manejo-e-Implementacion-de-Archivos/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>
